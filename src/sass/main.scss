@@ -1,0 +1,218 @@
+@font-face {
+	font-family: "Roboto";
+	src: url("../fonts/RobotoBold.ttf") format("truetype");
+	font-weight:  600;
+}
+html{
+	height: 100%;
+}
+body{
+	font-family: Roboto;
+	background: rgba(30,66,0,1);
+	height: 100%;
+}
+.game-table{
+	display: flex;
+	height: 80%;
+	background: url('../images/table_bg.png') no-repeat center;
+	background-size: contain;
+	position: relative;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.player{
+	position: absolute;
+	h3, .player-money{
+		font-size: 1.5vw;
+		color: #fff;
+		text-shadow:  0 0 1px #333;
+		width: 50%;
+		float: right;
+		margin: 0;
+		margin-bottom: 0.4vw;
+	}
+	.player-money{
+		font-size: 1.2vw;
+	}
+	.progress{
+		width: 0.5vw;
+		margin-bottom: 0.1vw;
+		height: 5vw;
+		float: left;
+		margin-left: 0.5vw;
+		border-radius: 0.2vw;
+		position: absolute;
+		left: 5vw;
+		bottom: calc(100% - 5vw);
+		transition: height 10s;
+		overflow: hidden;
+		opacity: 0;
+	}
+	.progress-time{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 5vw;
+		width: 100%;
+		background-image: linear-gradient(green, yellow, red);
+	}
+
+	&1{
+		left: 50%;
+		top: 63%;
+	}
+	&2{
+		left: 35%;
+		top: 63%;
+	}
+	&3{
+		left: 20%;
+		top: 58%;
+	}
+	&4{
+		left: 5%;
+		top: 32%;
+	}
+	&5{
+		left: 20%;
+		top: 3%;
+	}
+	&6{
+		left: 35%;
+		top: 0%;
+	}
+	&7{
+		left: 50%;
+		top: 0%;
+	}
+	&8{
+		left: 65%;
+		top: 2%;
+	}
+	&9{
+		left: 80%;
+		top: 28%;
+	}
+	&10{
+		position: fixed;
+		left: 80%;
+		top: 60%;
+	}
+}
+.player-photo{
+	display: flex;
+	float: left;
+	width: 5vw;
+	height: 5vw;
+	border-radius: 50%;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 0.2vw;
+	background: url('../images/default_avatar.png');
+	background-size: cover;
+	img{
+		max-width: 100%;
+	}
+}
+.player-cards{
+	clear: both;
+	margin-left: 4.5vw;
+}
+
+.card{
+	width: 7vw;
+	height: 9.8vw;
+	background: url('../images/play-cards.png');
+	background-size: 400%;
+	float: left;
+	margin-left: -4.5vw;
+	opacity: 0;
+	animation-name: animate;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+	transition: 0.5s;
+	&:nth-child(2){
+		margin-top: 0.2vw;
+	}
+	&:nth-child(3){
+		margin-top: 0.4vw;
+	}
+	&.hearts{
+		background-position-x: -7vw;
+	}
+	&.clubs{
+		background-position-x: -14vw;
+	}
+	&.diams{
+		background-position-x: -21vw;
+	}
+	&.card7{
+		background-position-y: -9.8vw;
+	}
+	&.card8{
+		background-position-y: -19.6vw;
+	}
+	&.card9{
+		background-position-y: -29.43vw;
+	}
+	&.card10{
+		background-position-y: -39.27vw;
+	}
+	&.cardJ{
+		background-position-y: -49.05vw;
+	}
+	&.cardQ{
+		background-position-y: -58.9vw;
+	}
+	&.cardK{
+		background-position-y: -68.74vw;
+	}
+	&.cardT{
+		background-position-y: -78.55vw;
+	}
+}
+.hidden-cards  .card{
+	background: url('../images/back-cards.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0 0 ;
+}
+.fall  .card{
+	margin-left: -6.8vw;
+}
+.playing .progress{
+	opacity: 1;
+	height: 0;
+}
+@for $i from 1 through 30 {
+	.show-delay#{$i} { animation-delay: 0.1s * $i; }
+}
+
+@keyframes animate {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.btn {
+	display: inline-block;
+	border-radius: 0.2vw;
+	padding: 0.7vw 1.5vw;
+	font-size: 1.2vw;
+	color: #fff;
+	background: linear-gradient(#006400, #1e4200);
+	box-shadow: 1px 2px 5px #333;
+	cursor: pointer;
+	&:hover{
+		box-shadow: 0px 1px 2px #333;
+	}
+}
+
+.player-panel {
+	position: fixed;
+	background: #eee;
+	bottom: 0;
+	left: 0;
+	padding: 1vw;
+	width: 100%;
+}
